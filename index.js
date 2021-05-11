@@ -3,13 +3,14 @@ const app = express()
 const port = 3000
 const bodyParser = require('body-parser') //최신 express에는 bodyParser기능이 내장되어있다.
 const {User}  = require("./models/users")
+const config = require("./config/key")
 
 app.use(express.urlencoded({extended: true})); //express에서 제공하는 bodyParser기능
 
 app.use(express.json());
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://nike1010:nike1010@boilerplate.nrdwu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB connected...'))
   .catch(err => console.log(err))
