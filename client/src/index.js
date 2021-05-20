@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import 'antd/dist/antd.css';  // css프레임워크 antdesign
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
