@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 const bodyParser = require('body-parser'); //최신 express에는 bodyParser기능이 내장되어있다.
 const cookieParser = require('cookie-parser');
 const {User}  = require("./models/users");
@@ -20,6 +20,10 @@ mongoose.connect(config.mongoURI, {
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
+})
+
+app.get('/api/hello', (req, res) => {
+  res.send("hihi")
 })
 
 app.post('/api/users/register', (req, res) => {
