@@ -1,17 +1,20 @@
 import React, {useEffect} from 'react'
-import axios from 'axios'
+import Axios from 'axios'
 //import { response } from 'express' //적은 기억이 없음...?
 
 function LandingPage() {
 
     useEffect(() =>{
-        axios.get('/api/hello')
+        Axios.get('/api/hello')
         .then(response => console.log(response.data))
     }, [])
 
     return (
-        <div>
-            LandingPage
+        <div style={{
+            display: 'flex', justifyContent: 'center', alignItems: 'center',
+            width: '100%', height: '100vh'
+        }}>
+           <h2>시작 페이지</h2>
         </div>
     )
 }

@@ -4,11 +4,25 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {Provider} from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import promiseMiddleware from'redux-promise';
+import ReduxThunk from 'redux-thunk';
+import Reducer from './_reducers'
+
 import 'antd/dist/antd.css';  // css프레임워크 antdesign
+
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider
+      store = {createStoreWithMiddleware(Reducer,
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()  
+      )}
+    >
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
